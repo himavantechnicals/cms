@@ -1,0 +1,30 @@
+.page-content{
+    max-width: 1040px;
+    margin: auto;
+}
+
+.top-Section{
+    margin: 10px;
+}
+
+.mdl-layout__drawer-button{
+    display: none
+}
+
+.form-panel{
+    max-width: 550px;
+    margin:auto;
+    padding:10px;
+}
+
+.mdl-textfield {
+    width: 100%;
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .mdl-layout__drawer-button{
+        display: block
+    }
+}

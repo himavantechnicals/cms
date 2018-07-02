@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <body ng-app="myapp">
+        <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <!-- Title -->
+                    <span class="mdl-layout-title">College Management System</span>
+                    <!-- Add spacer, to align navigation to the right -->
+                    <div class="mdl-layout-spacer"></div>
+                    <!-- Navigation. We hide it in small screens. -->
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href="">Home</a>
+                        <a class="mdl-navigation__link" href="">About</a>
+                        <a class="mdl-navigation__link" href="">Support</a>
+                        <a class="mdl-navigation__link" href="">Register</a>
+                        <a class="mdl-navigation__link" href="">Login</a>
+                    </nav>
+                </div>
+            </header>
+            <div class="mdl-layout__drawer">
+                <span class="mdl-layout-title">College Management System</span>
+                <nav class="mdl-navigation">
+                    <a class="mdl-navigation__link" href="">Home</a>
+                    <a class="mdl-navigation__link" href="">About</a>
+                    <a class="mdl-navigation__link" href="">Support</a>
+                    <a class="mdl-navigation__link" href="">Register</a>
+                    <a class="mdl-navigation__link" href="">Login</a>
+                </nav>
+            </div>
+            <main class="mdl-layout__content">
+                <div class="page-content">
+                    <div class="top-Section mdl-shadow--4dp">
+                        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                            <div class="mdl-tabs__tab-bar">
+                                <a href="#signin-panel" class="mdl-tabs__tab is-active">Sign In</a>
+                                <a href="#login-panel" class="mdl-tabs__tab">Sign UP</a>
+                            </div>
+
+                            <div class="mdl-tabs__panel is-active form-panel" id="signin-panel">
+                                <form action="#" class="">
+                                    <div style="max-width:270px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" pattern="[A-Z,a-z, ]*" type="text" id="Name" required>
+                                        <label class="mdl-textfield__label" for="Name">First Name</label>
+                                        <span class="mdl-textfield__error">Letters and spaces only</span>
+                                    </div>
+                                    <div style="max-width:270px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" pattern="[A-Z,a-z, ]*" type="text" id="Name" required>
+                                        <label class="mdl-textfield__label" for="Name">Last Name</label>
+                                        <span class="mdl-textfield__error">Letters and spaces only</span>
+                                    </div>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" type="email" id="Email" required>
+                                        <label class="mdl-textfield__label" for="Email">Email</label>
+                                        <span class="mdl-textfield__error">Enter a valid email.</span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" ng-model="formData.password" name="password" type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" id="password" required>
+                                        <label class="mdl-textfield__label" for="password">Password</label>
+                                        <span class="mdl-textfield__error">Password bust be minimum eight characters, at least one letter and one number</span>
+                                    </div>
+
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                            <input class="mdl-textfield__input"  type="password" id="password_c" name="password_c" ng-model="formData.password_c" required>
+                                            <label class="mdl-textfield__label" for="password_c">Confirm Password</label>
+                                            <span class="mdl-textfield__error" ng-show="myForm.password_c.$error.required && myForm.password_c.$dirty">Please confirm your password.</span>
+                <span class="mdl-textfield__error" ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords do not match.</span>
+
+                                        </div>
+
+                                    <p>
+                                        <button ng-disabled="myForm.password_c.$error.noMatch" onclick="sub()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+                                            Sign up
+                                        </button>
+                                    </p>
+                                </form>
+                            </div>
+                            <div class="mdl-tabs__panel" id="login-panel">
+                                <ul>
+                                    <li>Tywin</li>
+                                    <li>Cersei</li>
+                                    <li>Jamie</li>
+                                    <li>Tyrion</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+    <script>
+
+            var app = angular.module('myapp', ['UserValidation']);
+        
+            angular.module('UserValidation', []).directive('validPasswordC', function () {
+                return {
+                    require: 'ngModel',
+                    link: function (scope, elm, attrs, ctrl) {
+                        ctrl.$parsers.unshift(function (viewValue, $scope) {
+                            var noMatch = viewValue != scope.myForm.password.$viewValue
+                            ctrl.$setValidity('noMatch', !noMatch)
+                        })
+                    }
+                }
+            })
+        
+        </script>
+
+
+</html>
