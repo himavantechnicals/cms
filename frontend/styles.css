@@ -21,10 +21,21 @@
     width: 100%;
 }
 
+.text4 {
+   margin-left: 80px;
+   padding-top:10px;
+}
+
 
 
 @media screen and (max-width: 600px) {
     .mdl-layout__drawer-button{
         display: block
     }
+}
+
+.panel {
+    max-width: 450px;
+    margin:auto;
+    padding:10px;
 }

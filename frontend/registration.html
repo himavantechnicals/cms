@@ -103,13 +103,12 @@
         </div>
     </form>
 
-    <div class="text3">
+    <div class="textzs">
         <form class="text5" name="myForm">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text1">
-                <input type="password" id="password" name="password" ng-model="formData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/"
+                <input placeholder="password" type="password" id="password" name="password" ng-model="formData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/"
                     required class="mdl-textfield__input">
-                <label class="mdl-textfield__label text2" for="sample3">password...</label>
-                <div class="text1" style="margin-top: 0px">
+                <div class="text">
                     <span ng-show="!myForm.password.$error.required && (myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty">Passwords must be between 8 and 20 characters.</span>
                     <span ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</span>
                 </div>

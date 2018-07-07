@@ -54,48 +54,98 @@
                                 <form action="#" class="">
                                     <div style="max-width:270px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" pattern="[A-Z,a-z, ]*" type="text" id="Name" required>
-                                        <label class="mdl-textfield__label" for="Name">First Name</label>
+                                        <label style="color: blue;" class="mdl-textfield__label" for="Name">First Name</label>
                                         <span class="mdl-textfield__error">Letters and spaces only</span>
                                     </div>
                                     <div style="max-width:270px" class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <input class="mdl-textfield__input" pattern="[A-Z,a-z, ]*" type="text" id="Name" required>
-                                        <label class="mdl-textfield__label" for="Name">Last Name</label>
+                                        <label style="color: blue;" class="mdl-textfield__label" for="Name">Last Name</label>
                                         <span class="mdl-textfield__error">Letters and spaces only</span>
                                     </div>
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" type="email" id="Email" required>
-                                        <label class="mdl-textfield__label" for="Email">Email</label>
-                                        <span class="mdl-textfield__error">Enter a valid email.</span>
+                                </form>
+                                <form name="myFor">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text1">
+                                        <input type="email" id="email" name="email" ng-model="formData.email" required class="mdl-textfield__input">
+                                        <label style="color: blue;" class="mdl-textfield__label text2" for="sample3">Email...</label>
                                     </div>
-
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input" ng-model="formData.password" name="password" type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" id="password" required>
-                                        <label class="mdl-textfield__label" for="password">Password</label>
-                                        <span class="mdl-textfield__error">Password bust be minimum eight characters, at least one letter and one number</span>
+                                    <div class="text1" style="margin-top: 0px">
+                                        <span ng-show="!myFor.email.$error.required && myFor.email.$error.email && myFor.email.$dirty">invalid email </span>
                                     </div>
+                                </form>
+                                <div class="textzs">
+                                    <form class="text5" name="myForm">
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text1">
 
-                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input"  type="password" id="password_c" name="password_c" ng-model="formData.password_c" required>
-                                            <label class="mdl-textfield__label" for="password_c">Confirm Password</label>
-                                            <span class="mdl-textfield__error" ng-show="myForm.password_c.$error.required && myForm.password_c.$dirty">Please confirm your password.</span>
-                <span class="mdl-textfield__error" ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords do not match.</span>
-
+                                            <input type="password" id="password" name="password" ng-model="formData.password" ng-minlength="8" ng-maxlength="20" ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/"
+                                                required class="mdl-textfield__input">
+                                            <label style="color: blue;" class="mdl-textfield__label text2" for="sample3">Passsword...</label>
+                                        </div>
+                                        <div class="text">
+                                            <span ng-show="!myForm.password.$error.required && (myForm.password.$error.minlength || myForm.password.$error.maxlength) && myForm.password.$dirty">Passwords must be between 8 and 20 characters.</span>
+                                            <span ng-show="!myForm.password.$error.required && !myForm.password.$error.minlength && !myForm.password.$error.maxlength && myForm.password.$error.pattern && myForm.password.$dirty">Must contain one lower &amp; uppercase letter, and one non-alpha character (a
+                                                number or a symbol.)</span>
                                         </div>
 
-                                    <p>
-                                        <button ng-disabled="myForm.password_c.$error.noMatch" onclick="sub()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
-                                            Sign up
-                                        </button>
-                                    </p>
-                                </form>
+
+
+
+
+                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text1">
+                                            <input type="password" id="password_c" name="password_c" ng-model="formData.password_c" valid-password-c required class="mdl-textfield__input">
+                                            <label style="color: blue;" class="mdl-textfield__label text2" for="sample3">Confirm Passsword...</label>
+                                        </div>
+
+                                        <span ng-show="myForm.password_c.$error.required && myForm.password_c.$dirty">Please confirm your password.</span>
+                                        <span ng-show="!myForm.password_c.$error.required && myForm.password_c.$error.noMatch && myForm.password.$dirty">Passwords do not match.</span>
+
+                                    </form>
+                                </div>
+
+                                <!-- radio button -->
+                                <div class="text4">
+                                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+                                        <input onchange="if(this.checked){goTo('student.html')}" type="radio" id="option-1" class="mdl-radio__button" name="options"
+                                            value="1">
+                                        <span class="mdl-radio__label">Student</span>
+                                    </label>
+                                    <label style="margin-left: 10px;" class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
+                                        <input onchange="if(this.checked){goTo('faculty.html')}" type="radio" id="option-2" class="mdl-radio__button" name="options"
+                                            value="2">
+                                        <span class="mdl-radio__label">Faculty</span>
+                                    </label>
+                                </div>
+                                <p style="padding-top: 20px;">
+                                    <button ng-disabled="myForm.password_c.$error.noMatch" onclick="sub()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                        type="submit">
+                                        Sign up
+                                    </button>
+                                </p>
+
                             </div>
-                            <div class="mdl-tabs__panel" id="login-panel">
-                                <ul>
-                                    <li>Tywin</li>
-                                    <li>Cersei</li>
-                                    <li>Jamie</li>
-                                    <li>Tyrion</li>
-                                </ul>
+                            <div class="mdl-tabs__panel panel" id="login-panel">
+                                <form name="myFor">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text1">
+                                        <input type="email" id="email" name="email" ng-model="formData.email" required class="mdl-textfield__input">
+                                        <label style="color: blue;" class="mdl-textfield__label text2" for="sample3">Username...</label>
+                                    </div>
+
+                                </form>
+
+                                <form name="myFor">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label text1">
+                                        <input type="email" id="email" name="email" ng-model="formData.email" required class="mdl-textfield__input">
+                                        <label style="color: blue;" class="mdl-textfield__label text2" for="sample3">Password...</label>
+                                    </div>
+
+                                </form>
+                                <div>
+                                    <button style="margin-top: 20px; margin-left: 150px;" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                                        type="submit">
+                                        Login
+                                    </button>
+                                </div>
+
+                                <a style="text-decoration: none; font-size:15px;" href="">Forget password</a>
                             </div>
 
                         </div>
@@ -106,21 +156,29 @@
     </body>
     <script>
 
-            var app = angular.module('myapp', ['UserValidation']);
-        
-            angular.module('UserValidation', []).directive('validPasswordC', function () {
-                return {
-                    require: 'ngModel',
-                    link: function (scope, elm, attrs, ctrl) {
-                        ctrl.$parsers.unshift(function (viewValue, $scope) {
-                            var noMatch = viewValue != scope.myForm.password.$viewValue
-                            ctrl.$setValidity('noMatch', !noMatch)
-                        })
-                    }
-                }
-            })
-        
-        </script>
+        var app = angular.module('myapp', ['UserValidation']);
 
+        angular.module('UserValidation', []).directive('validPasswordC', function () {
+            return {
+                require: 'ngModel',
+                link: function (scope, elm, attrs, ctrl) {
+                    ctrl.$parsers.unshift(function (viewValue, $scope) {
+                        var noMatch = viewValue != scope.myForm.password.$viewValue
+                        ctrl.$setValidity('noMatch', !noMatch)
+                    })
+                }
+            }
+        })
+
+    </script>
+    <script>
+        function sub() {
+            window.location.href = site;
+        }
+        function goTo(URL) {
+            site = URL;
+        }
+
+    </script>
 
 </html>
