@@ -1,0 +1,109 @@
+<md-card style="width:900px; padding: 30px;">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Admin can add the Subjects</span>
+        </md-card-title-text>
+    </md-card-title>
+
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="30">
+            <label>Regulation</label>
+            <md-select ng-model="reg.regulation" ng-value="regulation">
+                <md-option><em>select</em></md-option>
+                <md-option ng-repeat="items in reg" style="text-transform:uppercase">
+                        {{items.regulation}}
+                    </md-option>
+            </md-select>
+        </md-input-container>
+        <md-button style="color:red" md-no-ink class="md-primary" ng-click="editReg($event)">Edit</md-button>
+    </div>
+
+    <div layout="row" layout-align="start" flex>
+
+        <label ng-model="reg.batch" for="batches">Batches</label>
+      
+    </div>
+
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="30">
+            <label>Course</label>
+            <md-select name="favoriteColor" ng-model="reg.course" required>
+                <md-option ng-repeat="items in course" ng-value="items.value">
+                    {{items.name}}({{items.value}})
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-button style="color:red" md-no-ink class="md-primary">Edit</md-button>
+    </div>
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="30">
+            <label>Branch</label>
+            <md-select name="favoriteColor" ng-model="reg.branch" required>
+                <md-option ng-repeat=" items in branch" ng-value="items.value">
+                    {{items.name}}({{items.value}})
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-button style="color:red" md-no-ink class="md-primary">Edit</md-button>
+    </div>
+
+
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="30">
+            <label>Year</label>
+            <md-select name="favoriteColor" ng-model="reg.year[0].yearNumber" required>
+                <md-option ng-repeat=" year in [1,2,3,4]" ng-value="year">
+                    {{year}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container flex="30">
+            <label>Semister</label>
+            <md-select ng-model="reg.year[0].sem[0].semNumber">
+                <md-option><em>All</em></md-option>
+                <md-option ng-repeat=" Semister in [1,2]" ng-value="Semister">
+                    {{Semister}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+
+
+
+    <div style="font-size:12px;line-height: 16px" ng-repeat="subItem in sub.subjects " layout="row">
+        <div layout="row" layout-align="start" flex>
+            <md-input-container flex="65">
+                <label>Enter Subject Name</label>
+                <input type="text" name="quest" ng-model="subItem.name" required />
+            </md-input-container>
+
+            <md-input-container flex="30">
+                <label>Subject Code</label>
+                <input type="text" name="quest" ng-model="subItem.code" required />
+            </md-input-container>
+        </div>
+
+
+        <div style="margin-top:20px;">
+            <md-button class="md-icon-button" ng-click="delete()">
+                <md-icon md-svg-icon="/images/icons/delete_box.svg"></md-icon>
+            </md-button>
+        </div>
+    </div>
+    <div layout="row">
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="add()">
+            <md-icon md-svg-icon="/images/icons/add_box.svg"></md-icon>
+        </md-button>
+    </div>
+
+    <div class="status_chip">
+        <span ng-if="formStatus">
+            <span class="mdl-chip"><span class="mdl-chip__text">{{formStatus}}</span></span>
+        </span>
+    </div>
+
+
+    <md-button style="width:30px;" ng-click="addClass()" class="md-warn md-raised md-hue-2">Submit</md-button>
+</md-card>

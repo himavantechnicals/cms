@@ -11,8 +11,12 @@ function nav() {
     }
 }
 
-function navCtrl($scope) {
-    $scope.isLoggedOut = false;
-    $scope.isLogged = false;
+function navCtrl($rootScope, $scope, AuthenticationState, Auth, $location) {
+    $scope.isLogged = AuthenticationState.auth.isLogged;
+
+    $rootScope.logout = function(){
+        Auth.logout();
+        $location.path("/reg");
+      };
 }
 

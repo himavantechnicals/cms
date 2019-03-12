@@ -1,0 +1,35 @@
+
+<div class="md-padding" ng-cloak layout="column">
+
+
+    <md-card style="width: 1000px; padding:30px;">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Student Performance Overview</span>
+                <span class="md-subhead">Students can check their attendence and marks.</span>
+            </md-card-title-text>
+
+        </md-card-title>
+        <div class="md-no-sticky" style="padding:16px; background: rgba(0, 0, 0, .1)" layout="row">
+
+            <div flex>Name of the Subject</div>
+            <div flex>Subject Marks</div>
+            <div flex>Total</div>
+        </div>
+        <md-list>
+            <md-list-item ng-repeat='subject in filtered = (subjects)' class="noright" layout="row">
+                <div flex>{{ subject.name }}</div>
+                <div flex>{{ subject.marks }} </div>
+                <div flex>{{ subject.total }}</div>
+            </md-list-item>
+        </md-list>
+        <hr>
+        <div style="display: inline-flex">
+            <div style="margin-left:30px;">TOTAL</div>
+            <div style="margin-left:240px;"> {{ filtered|score:'marks' }}</div>
+            <div style="margin-left:279px;"> {{ filtered|score:'total' }}</div>
+        </div>
+    </md-card>
+
+    
+</div>

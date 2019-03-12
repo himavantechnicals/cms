@@ -1,0 +1,42 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Edit Regulations</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div>
+                    <md-input-container>
+                        <label>Regulation</label>
+                        <input style="text-transform: uppercase" ng-model="regulation.regulation">
+                    </md-input-container>
+                </div>
+
+                <div>
+                    <h6>Add Batches</h3>
+                    <md-chips ng-model="regulation.batch" readonly="false" md-removable="removable">
+                    </md-chips>
+                </div>
+
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+
+            <span flex></span>
+            <md-button ng-click="submit()">
+                Submit
+            </md-button>
+            <md-button ng-click="cancel()">
+                Cancel
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

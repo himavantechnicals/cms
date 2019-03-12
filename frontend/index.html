@@ -2,32 +2,45 @@
 <html>
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
     crossorigin="anonymous">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 
 <link rel="stylesheet" href="dash.css">
 <link rel="stylesheet" href="styles.css">
 
-<body ng-app="cmsApp">
+<body ng-app="cmsApp" ng-cloak layout="column">
 
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-        <app-nav class="mdl-layout__header"></app-nav>
-        <app-menu class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50"></app-menu>
-        <main class="mdl-layout__content mdl-color--grey-100">
-            <div class="mdl-grid demo-content" ng-view>
-                Content Placeholder
-            </div>
-        </main>
-    </div>
+    <app-home></app-home>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
     <script src="app.js"></script>
     <script src="reg/reg.js"></script>
     <script src="nav/app-nav.js"></script>
     <script src="nav/app-menu.js"></script>
+    <script src="nav/app-home.js"></script>
+    <script src="student/student.js"></script>
+    <script src="student/Attendence.js"></script>
+    <script src="faculty/faculty.js"></script>
+    <script src="faculty/facultyAttendence.js"></script>
+    <script src="faculty/marks_editor.js"></script>
+    <script src="services/auth-services.js"></script>
+    <script src="services/auth-interceptor.js"></script>
+    <script src="admin/authorized-user.js"></script>
+    <script src="admin/addregulation.js"></script>
+    <script src="admin/addattendence.js"></script>
+    <script src="admin/addsubjects.js"></script>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
 </body>
 
 </html>

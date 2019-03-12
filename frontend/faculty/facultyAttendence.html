@@ -1,0 +1,87 @@
+<div class="md-padding" ng-cloak layout="column">
+
+    <p>
+        The <code>&lt;md-select&gt;</code> component can be used within a
+        <code>&lt;md-input-container&gt;</code> or as a stand alone component by using the
+        <code>md-no-underline</code> class.
+    </p>
+
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Student Marks</span>
+                <span class="md-subhead">Modify user authorization to access CMS.</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-card-content style="padding:0px"> 
+            <div layout="row">
+                <md-input-container>
+                    <label>Batch</label>
+                    <md-select ng-model="batchSelected">
+                        <md-option><em>none</em></md-option>
+                        <md-option ng-repeat=" batch in batch" ng-value="batch">
+                            {{batch.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container style="margin-left:30px;">
+                    <label>Course</label>
+                    <md-select ng-model="courseSelected">
+                        <md-option ng-repeat="items in year" ng-value="items.value">
+                            {{items.name}}({{items.value}})
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container style="margin-left:30px;">
+                    <label>Branch</label>
+                    <md-select ng-model="branchSelected">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="items in branch" ng-value="items.value">
+                            {{items.name}}({{items.value}})
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container style="margin-left:30px;">
+                    <label>Year</label>
+                    <md-select ng-model="yearSelected">
+                        <md-option><em>All</em></md-option>
+                        <md-option ng-repeat=" year in [1,2,3,4]" ng-value="year">
+                            {{year}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+
+                <md-input-container style="margin-left:30px;">
+                    <label>Semister</label>
+                    <md-select ng-model="semisterSelected">
+                        <md-option><em>All</em></md-option>
+                        <md-option ng-repeat=" Semister in ['I-SEM','II-Sem']" ng-value="Semister">
+                            {{Semister}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+            </div>
+
+            <div class="md-no-sticky" style="padding:16px; background: rgba(0, 0, 0, .1)" layout="row">
+
+                <div flex>Name of the Students</div>
+                <div flex>Student Identification Number</div>
+            </div>
+
+            <md-list>
+                <md-list-item ng-repeat="items in users | filter:usertypeSelected " class="noright" layout="row">
+                    <img alt="{{ items.name }}" ng-src="images/user.png" class="md-avatar" />
+                    <div flex>{{ items.name }}</div>
+                    <div flex>{{ items.userid }}</div>
+                    <md-checkbox flex style="margin-left:100px;" class="md-secondary" ng-checked="select" ng-model="items.selected"></md-checkbox>
+                </md-list-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>

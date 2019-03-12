@@ -1,0 +1,90 @@
+<div>
+    <md-toolbar>
+        <div class="mdl-layout__header-row">
+
+            <span class="mdl-layout-title">College Management System</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation. We hide it in small screens. -->
+
+            <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="/">Home</a>
+                <a class="mdl-navigation__link" href="#!about">About</a>
+                <a class="mdl-navigation__link" href="#!support">Support</a>
+                <a ng-hide="user" class="mdl-navigation__link" href="#!reg">Login</a>
+                <a ng-show="user" class="mdl-navigation__link" ng-click="logout()" href="">Logout</a>
+            </nav>
+        </div>
+    </md-toolbar>
+    <div layout="column" style="height:100%;" ng-cloak>
+        <section layout="row" flex>
+            <md-sidenav class="md-sidenav-left " md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" ng-show="user">
+                <md-toolbar class="md-theme-indigo">
+                    <md-button ng-click="close()" class="md-primary" hide-gt-md>
+                        Close Sidenav Left
+                    </md-button>
+                    <header class="demo-drawer-header">
+                        <img src="images/user.png" class="user-logo">
+                        <div class="user-details">
+                            <div class="user-name"> {{user.name}} </div>
+                            <div class="user-email">{{user.email}} ({{user.usertype}})</div>
+                        </div>
+                    </header>
+                </md-toolbar>
+                <md-content>
+                    <md-menu-content width="4">
+                        <md-menu-item>
+                            <md-button ng-href="#!/au">
+                                <md-icon md-svg-icon="" md-menu-align-target></md-icon>
+                                Authorization
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/attendence">
+                                <md-icon md-svg-icon="" md-menu-align-target></md-icon>
+                                Results
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/marks">
+                                <md-icon md-svg-icon=""></md-icon>
+                                Marks
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button ng-href="#!/addclasses">
+                                <md-icon md-svg-icon=""></md-icon>
+                                Add Subjects
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="#!/addsubjects">
+                                <md-icon md-svg-icon=""></md-icon>
+                                Add Classes
+                            </md-button>
+                        </md-menu-item>
+
+                        <md-menu-item>
+                            <md-button ng-href="#!/addattendence">
+                                <md-icon md-svg-icon=""></md-icon>
+                                Add Attendence
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+
+
+
+                </md-content>
+                <div flex></div>
+            </md-sidenav>
+            <md-content ng-view style="min-height:95vh; max-width: 1080px; margin: 10px auto">
+
+            </md-content>
+
+        </section>
+    </div>
+
+    <app-menu class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50" ng-show="user"></app-menu>
+
+</div>

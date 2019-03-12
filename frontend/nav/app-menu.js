@@ -11,6 +11,6 @@ function menu() {
     }
 }
 
-function menuCtrl(){
-
+function menuCtrl($scope,AuthenticationState){
+    $scope.isLogged = AuthenticationState.auth.isLogged;
 }

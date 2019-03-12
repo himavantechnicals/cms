@@ -1,0 +1,81 @@
+<style>
+    md-content {
+        background-color: white;
+    }
+
+    label {
+        font-size: x-small;
+    }
+</style>
+
+
+
+<md-card style="width:1000px; padding: 30px;">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Admin can Set the days of attendence</span>
+        </md-card-title-text>
+    </md-card-title>
+
+
+    <div layout="row" layout-align="start" flex>
+        <md-input-container flex="30">
+            <label>Subjects</label>
+            <md-select name="favoriteColor" ng-model="Year" required>
+                <md-option ng-repeat=" year in [1,2,3,4]" ng-value="year">
+                    {{year}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+
+
+
+
+    <md-content layout="column" layout-gt-sm="row" layout-padding ng-cloak>
+        <div layout="column" flex-order="1" flex-order-gt-sm="0">
+            <md-subheader style="background-color: white">Start Date</md-subheader>
+            <md-calendar ng-model="ctrl.startDate"></md-calendar>
+        </div>
+        <div layout="column" flex-order="1" flex-order-gt-sm="1">
+            <md-subheader style="background-color: white">End Date</md-subheader>
+            <md-calendar ng-model="ctrl.endDate"></md-calendar>
+        </div>
+        <div layout="column" flex-order="0" flex-order-gt-sm="2">
+            <md-subheader style="background-color: white">Dates</md-subheader>
+            <div>
+                <label>Start</label>
+                <div>{{ctrl.startDate | date:shortDate}}</div>
+            </div>
+            <div><label>End</label>
+                <div>{{ctrl.endDate | date:shortDate}}</div>
+            </div>
+        </div>
+    </md-content>
+
+
+
+    <div class="md-no-sticky" style="padding:16px; background: rgba(0, 0, 0, .1)" layout="row">
+
+        <div flex>Name of the Student</div>
+        <div flex=>Rollnumber</div>
+        <div flex=15>Assign Atttendence</div>
+    </div>
+
+    <md-list>
+        <md-list-item ng-repeat="user in users " class="noright" layout="row">
+
+            <div flex>{{ user.name }}</div>
+            <div flex>{{ user.rollno }}</div>
+            <div style="display: inline-flex; border: 1px solid">
+                <div style="border-right: 1px solid">
+                    <input maxlength="2" style="width:60px; height:20px; border: 0px; height: 40px; text-align: center "
+                        type="25" name="25" id="input">
+                </div>
+                <label style="padding:10px; " for="">25</label>
+            </div>
+        </md-list-item>
+    </md-list>
+
+</md-card>

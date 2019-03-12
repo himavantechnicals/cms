@@ -14,7 +14,7 @@ angular.module("cmsApp")
         }
     }]);
 
-function regCtrl($scope, appConfig, $http) {
+function regCtrl($scope, appConfig, $http, $location, Auth) {
 
     $scope.formStatus = '';
     $scope.signinStatus = '';
@@ -61,20 +61,32 @@ function regCtrl($scope, appConfig, $http) {
         } else {
             $scope.signinStatus = "Form is valid.";
             console.log($scope.logindata);
-            var userdata = $scope.logindata;
-            delete userdata.confirmPassword;
-            $http({
-                method: 'POST',
-                url: `${appConfig.apiUrl}auth/`,
-                data: userdata
-            }).then(function (response) {
-                if (response.status === 200) {
-                    console.log(response);
+            // var userdata = $scope.logindata;
+            // delete userdata.confirmPassword;
+            // $http({
+            //     method: 'POST',
+            //     url: `${appConfig.apiUrl}auth/`,
+            //     data: userdata
+            // }).then(function (response) {
+            //     if (response.status === 200) {
+            //         console.log(response);
+            //     }
+            // }).catch(function (error) {
+            //     $scope.signinStatus = error.data;
+            //     console.log(error);
+            // });
+            Auth.login($scope.logindata, function (res) {
+                console.log(res)
+                if (res.type == "success") {
+
+                    $location.path(res.page);
                 }
-            }).catch(function (error) {
-                $scope.signinStatus = error.data;
-                console.log(error);
+                else {
+                    console.log(res);
+                    $scope.signinStatus = res.message;
+                }
             });
+
         }
     }
 

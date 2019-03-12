@@ -1,0 +1,83 @@
+<md-card style="width:1000px; padding: 30px;">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">Admin can Assign Subjects to Faculty</span>
+        </md-card-title-text>
+    </md-card-title>
+
+
+
+    <div layout="row" layout-align="start" flex>
+            <md-input-container flex="30">
+                    <label>Batch</label>
+                    <md-select name="favoriteColor" ng-model="batches" ng-change="updateBaches()" required>
+                        <md-option ng-repeat="n in [] | loop:50" ng-value="n">
+                            {{n}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+        <md-input-container flex="30">
+                <label>Regulation</label>
+                <md-select name="favoriteColor" ng-model="regulation" ng-change="updateBaches()" >
+                        <md-option value='Select'> Select </md-option>
+                        <md-option  ng-repeat= "item in subject" ng-value="item">{{item.regulation}}</md-option>
+                    </md-select>
+            </md-input-container>
+        </md-input-container>
+        <md-input-container flex="30">
+                <label >Year</label>
+                <md-select  ng-model="yearselected">
+                    <md-option  ng-repeat="year in regulation.year" ng-value="year">
+                        {{year}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+    </div>
+
+
+
+    <div layout="row" layout-align="start" flex>
+            <md-input-container flex="30">
+                    <label>Semister</label>
+                    <md-select ng-disabled="!yearselected" ng-model="semister">
+                        <md-option ng-repeat=" Semister in ['1','2']" ng-value="Semister">
+                            {{Semister}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container flex="30">
+                        <label>Course</label>
+                        <md-select ng-disabled="!semister" name="favoriteColor" ng-model="reg.course" required>
+                            <md-option ng-repeat="items in course" ng-value="items.value">
+                                {{items.name}}({{items.value}})
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container flex="30">
+                            <label>Branch</label>
+                            <md-select ng-disabled="!reg.course" name="favoriteColor" ng-model="reg.branch" required>
+                                <md-option ng-repeat="items in branch" ng-value="items.value">
+                                    {{items.name}}({{items.value}})
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+    </div>
+    <div class="md-no-sticky" style="padding:16px; background: rgba(0, 0, 0, .1)" layout="row">
+
+        <div flex>Name of the Subjects</div>
+        <div flex=>Subject code</div>
+        <div flex=15>Assign faculty</div>
+    </div>
+
+    <md-list>
+        <md-list-item ng-repeat="items in subject.classes " class="noright" layout="row">
+
+            <div flex>{{ items.subName }}</div>
+            <div flex>{{ items.subCode }}</div>
+            <input type="text" name="" id="">
+
+        </md-list-item>
+    </md-list>
+
+
+</md-card>
